@@ -2,9 +2,13 @@
 
 This project aims at building classifiers for 3-D images from the T-LESS dataset. Specifically, we labeled 28 images from T-LESS CAD models into 6 disjoint categories (classes).
 
-To meet the challenge of the small sample, this project employs two distinct approaches:
+## Challenges and Strategies
 
 ![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/strategies.png)
+
+## Pipelines
+
+I developed two distinct pipelines for this task. The first one follows the logic of data augmentation and feed multiple images per object into a bag of visual words model. The second one takes only one snapshot of each object and applies to them [a meta-learning method documented here] (https://github.com/kjunelee/MetaOptNet).
 
 ![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/pipeline.png)
 
@@ -20,4 +24,4 @@ To meet the challenge of the small sample, this project employs two distinct app
 * Pack all data, labels, and category (labels) information into pickle file **(read_images.py)**
 * Apply MetaOptNet **(apply MetaOptNet.ipynb)**
 
-![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/meta-leraning.png)
+![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/meta-learning.png)
