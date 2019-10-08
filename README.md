@@ -2,7 +2,7 @@
 
 This project aims at building classifiers for 3-D images from the T-LESS dataset. Specifically, we labeled 28 images from T-LESS CAD models into 6 disjoint categories (classes).
 
-### A slide deck summarizing this project can be found in this [link](https://docs.google.com/presentation/d/1gPI8mBHrRALxYvreQ2w6GE0USxO4yxoAEVMmDMSYpK4/edit?usp=sharing)
+#### A slide deck summarizing this project can be found in this [link](https://docs.google.com/presentation/d/1gPI8mBHrRALxYvreQ2w6GE0USxO4yxoAEVMmDMSYpK4/edit?usp=sharing)
 
 ## Challenges and Strategies
 
