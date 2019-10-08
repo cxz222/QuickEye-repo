@@ -6,6 +6,8 @@ To meet the challenge of the small sample, this project employs two distinct app
 
 ![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/strategies.png)
 
+![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/pipeliness.png)
+
 1. Augmenting the data by taking 8 2-D snapshots from different angles for each object. These 2-D images are then classified using the following steps:
 * Take 2-D snapshots with different angles and random field of views **(render mesh.R)**
 * Identify keypoints and extract features using SIFT **(bag_of_visual_words.py)**
@@ -17,3 +19,5 @@ To meet the challenge of the small sample, this project employs two distinct app
 * Obtain 2-D topview projections using 400 x 400 frames, then resize images into 84 x 84 RBG files in the PNG format **(read_images.py)**
 * Pack all data, labels, and category (labels) information into pickle file **(read_images.py)**
 * Apply MetaOptNet **(apply MetaOptNet.ipynb)**
+
+![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/meta-leraning.png)
