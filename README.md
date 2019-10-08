@@ -1,8 +1,10 @@
-*Small-Sample Object Classification*
+# QuickEye: Ientify 3D Objects with Few-Shot Learning
 
 This project aims at building classifiers for 3-D images from the T-LESS dataset. Specifically, we labeled 28 images from T-LESS CAD models into 6 disjoint categories (classes).
 
 To meet the challenge of the small sample, this project employs two distinct approaches:
+
+![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/strategies.png)
 
 1. Augmenting the data by taking 8 2-D snapshots from different angles for each object. These 2-D images are then classified using the following steps:
 * Take 2-D snapshots with different angles and random field of views **(render mesh.R)**
