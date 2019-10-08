@@ -8,6 +8,7 @@ This project aims at building classifiers for 3-D images from the T-LESS dataset
 
 ![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/strategies.png)
 
+
 ## Pipelines
 
 I developed two distinct pipelines for this task. The first one follows the logic of data augmentation and feed multiple images per object into a bag of visual words model. The second one takes only one snapshot of each object and applies a meta-learning method documented here: https://github.com/kjunelee/MetaOptNet
