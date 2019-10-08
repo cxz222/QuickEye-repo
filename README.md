@@ -6,7 +6,7 @@ To meet the challenge of the small sample, this project employs two distinct app
 
 ![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/strategies.png)
 
-![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/pipeliness.png)
+![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/pipeline.png)
 
 1. Augmenting the data by taking 8 2-D snapshots from different angles for each object. These 2-D images are then classified using the following steps:
 * Take 2-D snapshots with different angles and random field of views **(render mesh.R)**
