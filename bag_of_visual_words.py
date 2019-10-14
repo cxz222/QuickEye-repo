@@ -217,7 +217,7 @@ testvec = ['04','08','12','18','23','30']
 # Randomly sample 5 classes for 5-way classification
 sample_classes = random.sample(population=[1,2,3,4,5,6], k=5)
 
-# Randomly generate 5-fold pseudo cross-validation partitions
+# Randomly generate 5-fold cross-validation partitions
 val_seq = np.stack(
         (np.tile(np.random.choice(['01','02','03'], 3, replace=False), 2)[0:5],
          np.tile(np.random.choice(['05','06','07'], 3, replace=False), 2)[0:5],
