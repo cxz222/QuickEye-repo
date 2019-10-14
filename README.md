@@ -25,6 +25,6 @@ I developed two distinct pipelines for this task. The first one follows the logi
 #### 2. Apply the MetaOptNet meta-learning method on topview 2-D projections of the 3-D objects (point clouds).
 * Obtain 2-D topview projections using 400 x 400 frames, then resize images into 84 x 84 RBG files in the PNG format **(read_images.py)**
 * Pack all data, labels, and category (labels) information into pickle file **(read_images.py)**
-* Apply MetaOptNet **(apply MetaOptNet.ipynb)**
+* Apply MetaOptNet **(protonet on 2-D t-less.ipynb)**
 
 ![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/meta-learning.png)
