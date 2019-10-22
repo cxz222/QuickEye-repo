@@ -4,9 +4,6 @@ This project aims at building classifiers for 3-D images from the T-LESS dataset
 
 #### A slide deck summarizing this project can be found in this [link](https://docs.google.com/presentation/d/1gPI8mBHrRALxYvreQ2w6GE0USxO4yxoAEVMmDMSYpK4/edit?usp=sharing)
 
-## Challenges and Strategies
-
-![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/strategies.png)
 
 ## Pipelines
 
