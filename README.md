@@ -2,6 +2,7 @@
 
 This project aims at building classifiers for 3-D images from the T-LESS dataset. Specifically, we labeled 28 images from T-LESS CAD models into 6 disjoint categories (classes).
 
+#### [My Medium story on this project](https://blog.insightdatascience.com/can-we-identify-3-d-images-using-very-little-training-data-ebae1ed1d8f9?source=friends_link&sk=701069b966d51c67e48b75854e507d9c) documents the technical considerations in more detail
 #### A slide deck summarizing this project can be found in this [link](https://docs.google.com/presentation/d/1gPI8mBHrRALxYvreQ2w6GE0USxO4yxoAEVMmDMSYpK4/edit?usp=sharing)
 
 
