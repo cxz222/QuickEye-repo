@@ -8,7 +8,7 @@ This project aims at building classifiers for 3-D images from the T-LESS dataset
 
 ## Pipelines
 
-To work around the small data problem, I developed two distinct pipelines, each following a strategy required for small data. The first performs data augmentation; the second uses meta-learning. These two strategies can be combined in practice.
+To work around the small data problem (a total of 28 objects in 6 classes), I developed two distinct pipelines, each following one strategy required for small data. The first performs data augmentation; the second uses meta-learning. These two strategies can be combined in practice.
 I used [Prototypical Networks](https://arxiv.org/abs/1703.05175) and adapted code from [MetaOptNet](https://github.com/kjunelee/MetaOptNet) for the meta-learning pipeline.
 
 ![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/pipeline.png)
