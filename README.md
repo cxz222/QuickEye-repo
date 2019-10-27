@@ -26,4 +26,8 @@ I used [Prototypical Networks](https://arxiv.org/abs/1703.05175) and adapted cod
 * Pack all data, labels, and category (labels) information into pickle file **(read_images.py)**
 * Apply Prototypical Networks. This was done on Google Colab. **(protonet on 2-D t-less.ipynb)**
 
+## Meta-Learning with Prototypical Networks
+
+The illustration below provides a schematic overview of the method. One may wonder whether and how meta-learning in this sense differs from transfer learning. I discussed this briefly in my Medium story linked above.
+
 ![alt text](https://raw.githubusercontent.com/cxz222/QuickEye-repo/master/README%20images/meta-learning.png)
