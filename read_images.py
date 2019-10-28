@@ -49,7 +49,7 @@ for i in range(1,31):
     image84 = image.resize((84, 84), Image.ANTIALIAS)
     image84.save("Images/resized/obj_" + str(i).zfill(2) + ".png")
     
-# Generate pickled file for MetaOptNet meta-testing input
+# Generate pickled file as input for meta-testing
 all_img = np.empty((0, 84, 84, 3), dtype = np.uint8)
 for i in range(1,31):
     img = imread("Images/resized/obj_" + str(i).zfill(2) + ".png")

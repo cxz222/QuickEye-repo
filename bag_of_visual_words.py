@@ -15,7 +15,6 @@ from sklearn.model_selection import StratifiedKFold
 
 os.chdir("C:/Users/zcyhi/Documents/Insight Project/rotated images/Exp 1")
 
-#-------------------------------Define Functions-------------------------------
 
 # Obtain SIFT descriptors from all images and combine into one single array with 128 columns
 # Train a k-means clustering model on all keypoints/descriptors
@@ -30,14 +29,13 @@ def read_and_clusterize(file_images, num_cluster):
         images_names = [a.strip() for a in images_names]
 
         for line in images_names:
-            #read image
             image = cv2.imread(line,1)
             # Convert them to grayscale
             image = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
             # SIFT extraction
             sift = cv2.xfeatures2d.SIFT_create()
             kp, descriptors = sift.detectAndCompute(image,None)
-            #append the descriptors to a list of descriptors
+            # Append the descriptors to a list of descriptors
             sift_keypoints.append(descriptors)
 
     sift_keypoints=np.asarray(sift_keypoints)
@@ -87,13 +85,13 @@ def calculate_centroids_histogram(file_images, model, num_bins):
             sift = cv2.xfeatures2d.SIFT_create()
             kp, descriptors = sift.detectAndCompute(image,None)
             
-            #assign a cluster to a keypoint/descriptor
+            # Assign a cluster to a keypoint/descriptor
             predict_kmeans=model.predict(descriptors)
-            #calculates the histogram
+            # Calculate the histogram
             hist, bin_edges=np.histogram(predict_kmeans, bins=num_bins)
-            #histogram is the feature vector
+            # Histogram is the feature vector
             feature_vectors.append(hist)
-            #define the class of the image
+            # Define class of the image
             [class_sample, obj_num]=define_class(line)
             class_vectors.append(class_sample)
             obj_vectors.append(obj_num)
@@ -101,10 +99,9 @@ def calculate_centroids_histogram(file_images, model, num_bins):
     feature_vectors=np.asarray(feature_vectors)
     class_vectors=np.asarray(class_vectors)
     obj_vectors=np.asarray(obj_vectors)
-    #return vectors and classes we want to classify
+    # Return vectors and classes we want to classify
     return class_vectors, feature_vectors, obj_vectors
 
-# Return 
 def reduce_dimension_pca(input_df, num_pc):
     pca = PCA(n_components = num_pc)
     principalComponents = pca.fit_transform(input_df)
@@ -188,53 +185,53 @@ def final_model_fit(num_cluster, num_bins, num_pc):
         
     print("Average accuracy on test set: {:.1%}".format(np.mean(accuracy_test_list)))
 
-#-------------------------------Main Script----------------------------------
 
+if __name__ == '__main__':
 
-# Generate list of images
-files = []
-for (dirpath, dirnames, filenames) in os.walk(os.getcwd()):
-    files.extend(filenames)
-    break
-files = [x for x in files if (('27' in x) == False and
-                              ('29' in x) == False and
-                              ('obj' in x) == True)]
-
-with open('rotate_image_list.txt', 'w') as txtfile:
-    for item in files:
-        txtfile.write("%s\n" % item)
-        
-# Add dimension/size information
-dims = pd.read_csv("dimensions.csv") 
-dims["Obj"] = dims['obj_num'].apply(lambda x: '{0:0>2}'.format(x))
-dims = dims.drop('obj_num', axis = 1)
-cols_to_norm = ['size_x','size_y','size_z']
-dims[cols_to_norm] = dims[cols_to_norm].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
-
-# Specify objects for hold-out test set
-testvec = ['04','08','12','18','23','30']
-
-# Randomly sample 5 classes for 5-way classification
-sample_classes = random.sample(population=[1,2,3,4,5,6], k=5)
-
-# Randomly generate 5-fold cross-validation partitions
-val_seq = np.stack(
-        (np.tile(np.random.choice(['01','02','03'], 3, replace=False), 2)[0:5],
-         np.tile(np.random.choice(['05','06','07'], 3, replace=False), 2)[0:5],
-         np.tile(np.random.choice(['09','10','11'], 3, replace=False), 2)[0:5],
-         np.random.choice(['13','14','15','16','17'], 5, replace=False),
-         np.tile(np.random.choice(['19','20','21','22'], 4, replace=False), 2)[0:5],
-         np.tile(np.random.choice(['24','25','26','28'], 4, replace=False), 2)[0:5]),
-    axis = 0)
-
-# Test some hyperparameters
-avg_accuracy(400, 20, 15)
-avg_accuracy(400, 30, 15)
-avg_accuracy(400, 40, 15)
-avg_accuracy(625, 25, 15)
-avg_accuracy(400, 20, 10)    # Winning model
-avg_accuracy(900, 30, 15)
-avg_accuracy(225, 15, 15)
-
-# Obtain final prediction and accuracy on hold-out test set
-final_model_fit(400, 20, 10)
+    # Generate list of images
+    files = []
+    for (dirpath, dirnames, filenames) in os.walk(os.getcwd()):
+        files.extend(filenames)
+        break
+    files = [x for x in files if (('27' in x) == False and
+                                  ('29' in x) == False and
+                                  ('obj' in x) == True)]
+    
+    with open('rotate_image_list.txt', 'w') as txtfile:
+        for item in files:
+            txtfile.write("%s\n" % item)
+            
+    # Add dimension/size information
+    dims = pd.read_csv("dimensions.csv") 
+    dims["Obj"] = dims['obj_num'].apply(lambda x: '{0:0>2}'.format(x))
+    dims = dims.drop('obj_num', axis = 1)
+    cols_to_norm = ['size_x','size_y','size_z']
+    dims[cols_to_norm] = dims[cols_to_norm].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
+    
+    # Specify objects for hold-out test set
+    testvec = ['04','08','12','18','23','30']
+    
+    # Randomly sample 5 classes for 5-way classification
+    sample_classes = random.sample(population=[1,2,3,4,5,6], k=5)
+    
+    # Randomly generate 5-fold cross-validation partitions
+    val_seq = np.stack(
+            (np.tile(np.random.choice(['01','02','03'], 3, replace=False), 2)[0:5],
+             np.tile(np.random.choice(['05','06','07'], 3, replace=False), 2)[0:5],
+             np.tile(np.random.choice(['09','10','11'], 3, replace=False), 2)[0:5],
+             np.random.choice(['13','14','15','16','17'], 5, replace=False),
+             np.tile(np.random.choice(['19','20','21','22'], 4, replace=False), 2)[0:5],
+             np.tile(np.random.choice(['24','25','26','28'], 4, replace=False), 2)[0:5]),
+        axis = 0)
+    
+    # Test some hyperparameters
+    avg_accuracy(400, 20, 15)
+    avg_accuracy(400, 30, 15)
+    avg_accuracy(400, 40, 15)
+    avg_accuracy(625, 25, 15)
+    avg_accuracy(400, 20, 10)    # Winning model
+    avg_accuracy(900, 30, 15)
+    avg_accuracy(225, 15, 15)
+    
+    # Obtain final prediction and accuracy on hold-out test set
+    final_model_fit(400, 20, 10)
